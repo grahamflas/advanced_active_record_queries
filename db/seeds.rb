@@ -7,3 +7,25 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+developer = Role.create(
+  name: "Developer",
+  billable: true,
+)
+
+manager = Role.create(
+  name: "Manager",
+  billable: false,
+)
+
+Person.create(
+  name: "Wendell",
+  role: developer,
+)
+Person.create(
+  name: "Christie",
+  role: developer,
+)
+Person.create(
+  name: "Eve",
+  role: manager,
+)
