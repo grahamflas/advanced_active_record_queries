@@ -3,7 +3,7 @@ class Person < ApplicationRecord
   belongs_to :location
 
   scope :billable, -> {
-    joins(:role).
+    joins(:role)
     merge(Role.billable)
   }
 end
