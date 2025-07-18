@@ -4,7 +4,7 @@ class Location < ApplicationRecord
 
   scope :billable, -> {
     joins(people: :role).
-      where(role: { billable: true }).
+      merge(Person.billable).
       distinct
   }
 end
