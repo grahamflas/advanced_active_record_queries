@@ -7,4 +7,10 @@ class Location < ApplicationRecord
       merge(Person.billable).
       distinct
   }
+
+  scope :by_region_name_and_location_name, -> {
+    joins(:region).
+      merge(Region.order(:name)).
+      order(:name)
+  }
 end

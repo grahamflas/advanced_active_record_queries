@@ -44,5 +44,37 @@ RSpec.describe Location, type: :model do
         expect(results).not_to include(non_billable_location)
       end
     end
+
+    describe "#by_region_name_and_location_name" do
+      it "returns locations ordered by region name, then location name" do
+        region_c = create(:region, name: "c")
+        region_b = create(:region, name: "b")
+        region_a = create(:region, name: "a")
+
+        location_9 = create(:location, name: "9", region: region_c)
+        location_8 = create(:location, name: "8", region: region_b)
+        location_7 = create(:location, name: "7", region: region_a)
+        location_6 = create(:location, name: "6", region: region_c)
+        location_5 = create(:location, name: "5", region: region_b)
+        location_4 = create(:location, name: "4", region: region_a)
+        location_3 = create(:location, name: "3", region: region_c)
+        location_2 = create(:location, name: "2", region: region_b)
+        location_1 = create(:location, name: "1", region: region_a)
+
+        results = Location.by_region_name_and_location_name
+
+        expect(results).to eq([
+          location_1,
+          location_4,
+          location_7,
+          location_2,
+          location_5,
+          location_8,
+          location_3,
+          location_6,
+          location_9,
+        ])
+      end
+    end
   end
 end
