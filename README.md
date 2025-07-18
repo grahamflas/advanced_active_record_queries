@@ -1,24 +1,39 @@
-# README
+## About
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This application demonstrates examples from the [Advanced ActiveRecord Querying](https://thoughtbot.com/upcase/advanced-activerecord-querying) trail by Upcase (thoughtbot). It showcases advanced querying techniques in Rails using ActiveRecord, with comprehensive tests written using RSpec and FactoryBot.
 
-Things you may want to cover:
+## Getting Started
 
-* Ruby version
+1. **Clone the repository:**
+  ```sh
+  git clone <repository-url>
+  cd advanced_active_record
+  ```
 
-* System dependencies
+2. **Install dependencies:**
+  ```sh
+  bundle install
+  ```
 
-* Configuration
+3. **Set up the database:**
+  ```sh
+  rails db:create db:migrate db:seed
+  ```
 
-* Database creation
+4. **Run the test suite:**
+  ```sh
+  bundle exec rspec
+  ```
 
-* Database initialization
+## Testing
 
-* How to run the test suite
+- Tests are written with [RSpec](https://rspec.info/) and [FactoryBot](https://github.com/thoughtbot/factory_bot).
+- To run all tests:
+  ```sh
+  bundle exec rspec
+  ```
 
-* Services (job queues, cache servers, search engines, etc.)
+## Resources
 
-* Deployment instructions
-
-* ...
+- [Advanced ActiveRecord Querying Trail](https://thoughtbot.com/upcase/advanced-activerecord-querying)
+- [Upcase by thoughtbot](https://thoughtbot.com/upcase)
