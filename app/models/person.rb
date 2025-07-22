@@ -15,9 +15,14 @@ class Person < ApplicationRecord
     merge(Role.billable)
   }
 
-  scope :not_managed_by, -> (manager_id) {
-    joins(:manager).
-    where.
-    not(managers_people: { id: manager_id })
+  scope :not_managed_by, ->(manager_id) {
+    joins(<<-SQL).
+      LEFT JOIN people managers
+        ON managers.id = people.manager_id
+    SQL
+    where(
+      "managers.id != ? OR people.manager_id IS NULL",
+      manager_id,
+    )
   }
 end

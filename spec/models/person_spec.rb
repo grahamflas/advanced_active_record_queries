@@ -49,22 +49,22 @@ RSpec.describe Person, type: :model do
         employee_a = create(
           :person,
           name: "Employee A",
-          manager: manager_1
+          manager: manager_1,
         )
         employee_b = create(
           :person,
           name: "Employee B",
-          manager: manager_2
+          manager: manager_2,
         )
         employee_c = create(
           :person,
           name: "Employee C",
-          manager: manager_2
+          manager: manager_2,
         )
         employee_d = create(
           :person,
           name: "Employee D",
-          manager: manager_3
+          manager: manager_3,
         )
 
         # Not managed by manager 1
@@ -79,6 +79,21 @@ RSpec.describe Person, type: :model do
             manager_3,
             employee_b,
             employee_c,
+            employee_d,
+          ].map(&:name),
+        )
+
+        # Not managed by manager 2
+        results_2 = Person.not_managed_by(manager_2.id)
+
+        expect(
+          results_2.map(&:name)
+        ).to match_array(
+          [
+            manager_1,
+            manager_2,
+            manager_3,
+            employee_a,
             employee_d,
           ].map(&:name),
         )
