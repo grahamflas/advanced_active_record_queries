@@ -26,28 +26,42 @@ manager = Role.find_or_create_by!(
   billable: false,
 )
 
+eve = Person.find_or_create_by!(
+  name: "Eve",
+  role: manager,
+  location: new_york,
+  manager: nil,
+)
+bill = Person.find_or_create_by!(
+  name: "Bill",
+  role: manager,
+  location: berlin,
+  manager: nil,
+)
+
 Person.find_or_create_by!(
   name: "Wendell",
   role: developer,
   location: boston,
+  manager: eve,
+
 )
 Person.find_or_create_by!(
   name: "Christie",
   role: developer,
   location: boston,
+  manager: eve,
 )
 Person.find_or_create_by!(
   name: "Sandy",
   role: developer,
   location: denver,
-)
-Person.find_or_create_by!(
-  name: "Eve",
-  role: manager,
-  location: new_york,
+  manager: bill,
 )
 Person.find_or_create_by!(
   name: "Graham",
   role: developer,
   location: berlin,
+  manager: bill,
 )
+

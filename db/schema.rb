@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_07_18_075944) do
+ActiveRecord::Schema[8.0].define(version: 2025_07_22_110955) do
   create_table "locations", force: :cascade do |t|
     t.string "name"
     t.integer "region_id", null: false
@@ -25,7 +25,9 @@ ActiveRecord::Schema[8.0].define(version: 2025_07_18_075944) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "location_id", null: false
+    t.integer "manager_id"
     t.index ["location_id"], name: "index_people_on_location_id"
+    t.index ["manager_id"], name: "index_people_on_manager_id"
     t.index ["role_id"], name: "index_people_on_role_id"
   end
 
@@ -44,5 +46,6 @@ ActiveRecord::Schema[8.0].define(version: 2025_07_18_075944) do
 
   add_foreign_key "locations", "regions"
   add_foreign_key "people", "locations"
+  add_foreign_key "people", "people", column: "manager_id"
   add_foreign_key "people", "roles"
 end
